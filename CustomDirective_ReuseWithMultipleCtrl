@@ -1,0 +1,34 @@
+<html>
+
+<script src="./js/library/ext/angular-1.5.0/angular.min.js"></script>
+<script src="./js/library/ext/angular-1.5.0/angular-mocks.js"></script>
+<body>
+<script>
+	var myApp = angular.module('myApp',[]);
+	
+	myApp.controller('myCtrl2',function($scope){
+		$scope.customer = [{name:'igor1',age:'121'},{name:'naomi1',age:'201'}];
+	});
+	myApp.controller('myCtrl3',function($scope){
+		$scope.customer = [{name:'igor2',age:'122'},{name:'naomi2',age:'202'}];
+	});
+	myApp.directive('myDir',function(){
+		return{
+			template : '<div ng-repeat="x in customer"> name : {{x.name}} </div>'
+		}
+	});
+	
+</script>
+<div ng-app="myApp">
+	<div ng-controller="myCtrl2">
+		<div my-dir>
+		</div>
+	<div>
+	<div ng-controller="myCtrl3">
+		<div my-dir>
+		</div>
+	<div>
+</div>
+</body>
+</html>
+        
