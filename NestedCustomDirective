@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- this example is properly running in jsfiddle but not as a seperate .html file -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<!-- The scope in local is preferred over the parent.Hence if scope is present in inner directive / paren outer directive, then inner one is picked.
+     Also, if the scope is present in controller and inner and outer, scope of inner is given priority. -->
+     
+<body>
+<div ng-controller="DemoCtrl">
+  Hello, {{name}}!
+    <outer>
+      <inner></inner>
+    </outer>
+</div>
+
+<script>
+var myApp = angular.module('myApp', []);
+myApp.controller('DemoCtrl',['$scope', function($scope){
+    $scope.name = 'nadia';
+    $scope.nameForNestedDirective = 'eirini';
+}])
+ myApp.directive('outer',function(){
+        return{
+            transclude:true,
+            restrict:'E',
+            template:'<div><div ng-transclude></div><h1>i am a outer</h1></div>',
+            link:function(scope,elem,attr){
+            	 
+            },
+            controller : function($scope){
+                this.addItem = function(val){
+                    console.log(val);
+                }
+            }
+        }
+    });
+
+    myApp.directive('inner',function(){
+        return{
+            restrict:'E',
+            require : '^outer',
+            template : '<div><h1>i am a inner{{name}}</h1></div>',
+            link:function(scope,elem,attr,outercontrol){
+                outercontrol.addItem(1);
+               
+            }
+        }
+    });
+</script>
+</body>
+</html>
