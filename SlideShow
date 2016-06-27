@@ -2,11 +2,38 @@
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body ng-app="myApp">
 	<div ng-controller="myCtrl">
-		<div ng-repeat="image in images">
-			<img ng-src="{{image.src}}" ng-show="image.visible" style="height:500px;width:1000px;margin:auto;display:block;"/>
+		<nav class="navbar navbar-inverse" style="top: 40px;">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			  <a class="navbar-brand" href="#">WebSiteName</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">LifeStyle<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Kids</a></li>
+						<li><a href="#">Men</a></li>
+						<li><a href="#">Women</a></li>
+					</ul>
+				</li>
+			  <li><a href="#">Page 2</a></li> 
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+			  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+		  </div>
+		</nav>
+		<div class="container">
+			<div class="jumbotron">
+				<img ng-repeat="image in images" ng-src="{{image.src}}" ng-show="image.visible" style="height:500px;width:1000px;margin:auto;display:block;"/>
+			</div>
 		</div>
 		<span ng-click="next(-1)" style="display:block;position:absolute;top:200px;left:200px;color:white" class="glyphicon glyphicon-chevron-left"></span>
 		<span ng-click="next(1)" style="display:block;position:absolute;top:200px;left:1130px;color:white" class="glyphicon glyphicon-chevron-right"></span>
@@ -29,6 +56,9 @@
 				$scope.images[$scope.slideIndex]['visible'] = true;
 			}
 			$interval($scope.next.bind(null,1),5000);
+			$('.dropdown').hover(function(){ 
+			  $('.dropdown-toggle', this).trigger('click'); 
+			});
 		});
 	</script>
 </body>
