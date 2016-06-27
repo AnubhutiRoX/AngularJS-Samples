@@ -1,0 +1,35 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		<div ng-repeat="image in images">
+			<img ng-src="{{image.src}}" ng-show="image.visible" style="height:500px;width:1000px;margin:auto;display:block;"/>
+		</div>
+		<span ng-click="next(-1)" style="display:block;position:absolute;top:200px;left:200px;color:white" class="glyphicon glyphicon-chevron-left"></span>
+		<span ng-click="next(1)" style="display:block;position:absolute;top:200px;left:1130px;color:white" class="glyphicon glyphicon-chevron-right"></span>
+	</div>
+	<script>
+		var myApp = angular.module('myApp',[]);
+		myApp.controller('myCtrl',function($scope,$interval){
+			$scope.images = [{src:"C:\Users/Public/Pictures/Sample Pictures/Chrysanthemum.jpg",visible:true},{src:"C:\Users/Public/Pictures/Sample Pictures/Desert.jpg",visible:false},{src:"C:/Users/Public/Pictures/Sample Pictures/Hydrangeas.jpg",visible:false}];
+			$scope.slideIndex = 0;
+			$scope.next=function(n){
+				angular.forEach($scope.images,function(object,index){
+					$scope.images[index]['visible'] = false;
+				});
+				$scope.slideIndex += n;
+				if($scope.slideIndex < 0){
+					$scope.slideIndex = $scope.images.length -1;
+				}else if($scope.slideIndex >= $scope.images.length){
+					$scope.slideIndex = 0;
+				}
+				$scope.images[$scope.slideIndex]['visible'] = true;
+			}
+			$interval($scope.next.bind(null,1),5000);
+		});
+	</script>
+</body>
+</html>
