@@ -1,0 +1,181 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>-->
+	<script src="https://code.angularjs.org/1.2.6/angular-route.min.js"></script>	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="myApp">
+	<style>
+		button.btn.btn-primary, button.btn.btn-primary:active{
+			background-color: hsl(186, 81%, 42%);
+			border-color: hsl(186, 81%, 42%);
+		}
+		button.btn.btn-primary:hover{
+			/*background-color:hsl(186, 60%, 76%);
+			border-color:hsl(186, 60%, 76%);*/
+			text-decoration:underline;
+		}
+	</style>
+	<div ng-controller="myCtrl">
+		<nav class="navbar navbar-inverse" style="top: 40px;">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			  <a class="navbar-brand" href="#">WebSiteName</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">LifeStyle<span class="caret"></span></a>
+					<div class="dropdown-menu" style="min-width: 1032px;">
+						<div>
+							<ul style="list-style-type:none">
+								<li style="display:inline;float:left">
+									<a href="#/footwear">Footwear</a>
+									<ul style="list-style-type:none">
+										<li ng-repeat="x in footwearCategory"><a ng-href="{{x.src}}">{{x.category}}</li>
+									</ul>
+								</li>
+								<li style="display:inline;float: left;">
+									<a href="#">Grooming</a>
+									<ul style="list-style-type:none">
+										<li><a href="#">Men</a>
+											<ul style="list-style-type:none">
+												<li ng-repeat="x in groomingMens"><a href="{{x.src}}">{{x.category}}</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Women</a>
+											<ul style="list-style-type:none">
+												<li ng-repeat="x in groomingWomens"><a href="{{x.src}}">{{x.category}}</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li style="display:inline;float: left;">
+									<a href="#">Apparals</a>
+									<ul style="list-style-type:none">
+										<li><a href="#">Men</a>
+											<ul style="list-style-type:none">
+												<li ng-repeat="x in apparalMens"><a href="{{x.src}}">{{x.category}}</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Women</a>
+											<ul style="list-style-type:none">
+												<li ng-repeat="x in apparalWomens"><a href="{{x.src}}">{{x.category}}</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Kids</a>
+											<ul style="list-style-type:none">
+												<li ng-repeat="x in apparalKids"><a href="{{x.src}}">{{x.category}}</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li style="display:inline;float: left;">
+									<a href="#">Stationary</a>
+									<ul style="list-style-type:none">
+										<li ng-repeat="x in stationaryItems"><a href="{{x.src}}">{{x.category}}</a></li>
+									</ul>
+								</li>
+							</ul>
+							
+						</div>
+					</div>
+					
+				</li>
+				<li><a href="#">Furniture</a></li> 
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+			  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+		  </div>
+		</nav>
+		
+		<div class="container">
+			<div style="margin-top:46px;margin-bottom:46px">
+				<a href="#"><img style="width:100%" src="C:/Users/455653/Desktop/Test/Images/honorMobOffer.png"/></a>
+				<button type="button" class="btn btn-primary" style="position: absolute;margin-top: -37px;margin-left: 1007px;">Registor Now</button>
+				
+			</div>
+			
+			
+		  <br>
+		  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+			  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			  <li data-target="#myCarousel" data-slide-to="1"></li>
+			  <li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+			  <div class="item active">
+				<img style="margin:auto;" src="C:\Users/Public/Pictures/Sample Pictures/Chrysanthemum.jpg" alt="Chania" width="460" height="345">
+			  </div>
+
+			  <div class="item" ng-repeat="x in images">
+				<img style="margin:auto;" ng-src="{{x.src}}" alt="Chania" width="460" height="345">
+			  </div>
+		    </div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			  <span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			  <span class="sr-only">Next</span>
+			</a>
+		  </div>
+		  <div class="">
+			<div ng-view class=""></div>
+		  </div>
+		</div>
+	</div>
+	<script>
+		var myApp = angular.module('myApp',['ngRoute']);
+			myApp.config(['$routeProvider', '$locationProvider',
+				function($routeProvider, $locationProvider) {
+					$routeProvider
+						.when('/footwear', {
+						  templateUrl: 'FootwearSection.html',
+						  controller: 'footwearCtrl'						  
+						});
+					
+				}
+			]);
+			myApp.controller('myCtrl',function($scope, $interval, $route, $routeParams, $location){
+			
+			$scope.images = [{src:"C:\Users/Public/Pictures/Sample Pictures/Desert.jpg",visible:false},{src:"C:/Users/Public/Pictures/Sample Pictures/Hydrangeas.jpg",visible:false}];
+			
+			$scope.footwearCategory = [{category:'Casual',src:'#'},{category:'Office Wear',src:'#'},{category:'Party Wear',src:'#'},{category:'FlipFlops',src:'#'}];
+			
+			$scope.groomingMens = [{category:'Casual Grooming kit',src:'#'},{category:'Lorem ipsum',src:'#'},{category:'consectetuer ',src:'#'},{category:'commodo ligula',src:'#'},{category:'Cum sociis',src:'#'},{category:'aliquet',src:'#'},{category:'tincidunt',src:'#'}];
+			
+			$scope.groomingWomens = [{category:'Women Grooming kit',src:'#'},{category:'ipsum',src:'#'},{category:'Lorem consectetuer ',src:'#'},{category:'ligula',src:'#'},{category:'Aliquam ',src:'#'},{category:'aliquet',src:'#'},{category:'perdiet',src:'#'},{category:'Loimprdiet',src:'#'},{category:'linkimper diet',src:'#'},{category:'toim erdt',src:'#'}];
+			
+			$scope.apparalMens = [{category:'Women Grooming kit',src:'#'},{category:'ipsum',src:'#'},{category:'Lorem consectetuer ',src:'#'},{category:'ligula',src:'#'},{category:'Aliquam ',src:'#'},{category:'aliquet',src:'#'},{category:'imperdiet',src:'#'}];
+			
+			$scope.apparalWomens = [{category:'Women Grooming kit',src:'#'},{category:'ipsum',src:'#'},{category:'Lorem consectetuer ',src:'#'},{category:'ligula',src:'#'},{category:'Aliquam ',src:'#'},{category:'aliquet',src:'#'},{category:'imperdiet',src:'#'}];
+			
+			$scope.apparalKids = [{category:'Kid Apparal Category',src:'#'},{category:'ipsum',src:'#'},{category:'Lorem consectetuer ',src:'#'},{category:'ligula',src:'#'},{category:'Aliquam ',src:'#'},{category:'aliquet',src:'#'},{category:'imperdiet',src:'#'}];
+			
+			$scope.stationaryItems = [{category:'Fusce',src:'#'},{category:'suscipit',src:'#'},{category:'Vestibulum',src:'#'},{category:'Nonummy',src:'#'},{category:'volutpat',src:'#'},{category:'blandit',src:'#'},{category:'Quisque',src:'#'}]
+			
+			$('.dropdown').hover(function(){ 
+			  $('.dropdown-toggle', this).trigger('click'); 
+			});
+			$scope.mensSection = false;
+			$scope.showHidePopUp = function(val){
+				$scope.mensSection = val;
+			}
+		});
+	</script>
+</body>
+</html>
