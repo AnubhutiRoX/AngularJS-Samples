@@ -30,7 +30,13 @@
 			</ul>
 		  </div>
 		</nav>
+		
 		<div class="container">
+			<div style="margin-top:46px;margin-bottom:46px">
+				<a href="#"><img style="width:100%" src="D:/ApacheTomcat/apache-tomcat-6.0.45/webapps/ShopApp/Images/honorMobOffer.png"/></a>
+				<button type="button" class="btn btn-primary" style="position: absolute;margin-top: -37px;margin-left: 1007px;">Registor Now</button>
+				
+			</div>
 			<div class="jumbotron">
 				<img ng-repeat="image in images" ng-src="{{image.src}}" ng-show="image.visible" style="height:500px;width:1000px;margin:auto;display:block;"/>
 			</div>
@@ -41,7 +47,7 @@
 	<script>
 		var myApp = angular.module('myApp',[]);
 		myApp.controller('myCtrl',function($scope,$interval){
-			$scope.images = [{src:"C:\Users/Public/Pictures/Sample Pictures/Chrysanthemum.jpg",visible:true},{src:"C:\Users/Public/Pictures/Sample Pictures/Desert.jpg",visible:false},{src:"C:/Users/Public/Pictures/Sample Pictures/Hydrangeas.jpg",visible:false}];
+			$scope.images = [{src:"D:/ApacheTomcat/apache-tomcat-6.0.45/webapps/ShopApp/Images/LifestyleOffer.png",visible:true},{src:"D:/ApacheTomcat/apache-tomcat-6.0.45/webapps/ShopApp/Images/MobOffer.png",visible:false},{src:"D:/ApacheTomcat/apache-tomcat-6.0.45/webapps/ShopApp/Images/electronicOffer.png",visible:false}];
 			$scope.slideIndex = 0;
 			$scope.next=function(n){
 				angular.forEach($scope.images,function(object,index){
@@ -55,7 +61,7 @@
 				}
 				$scope.images[$scope.slideIndex]['visible'] = true;
 			}
-			$interval($scope.next.bind(null,1),5000);
+			$interval($scope.next.bind(null,1),2000);
 			$('.dropdown').hover(function(){ 
 			  $('.dropdown-toggle', this).trigger('click'); 
 			});
