@@ -1,0 +1,15 @@
+<table class="table">
+	<caption>Footwear Section</caption>
+	<tr ng-repeat="data in footwearTypes">
+		<td><a href="#"><figure><img ng-src="{{data.imgSrc1}}"/><figcaption>{{data.category1}}</figcaption></figure></a></td>
+		<td><a href="#"><figure><img ng-src="{{data.imgSrc2}}"/><figcaption>{{data.category2}}</figcaption></figure></a></td>
+		<td><a href="#"><figure><img ng-src="{{data.imgSrc3}}"/><figcaption>{{data.category3}}</figcaption></figure></a></td>
+	</tr>
+</table>
+<style>
+figure{
+	display: block;
+    margin: auto;
+    text-align: center;
+}
+</style>
